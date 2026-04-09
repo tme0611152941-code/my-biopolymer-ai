@@ -81,6 +81,21 @@ else:
         res_im = model_im.predict([[m_id, g_id, f_percent]])[0]
 
         st.divider()
+        # เพิ่มตัวเลือกใน Sidebar
+st.sidebar.subheader("🎯 วัตถุประสงค์การใช้งาน")
+method = st.sidebar.selectbox("วิธีการขึ้นรูป", ["Injection Molding", "Extrusion", "Film Blowing"])
+application = st.sidebar.selectbox("เป้าหมายหลัก", ["เน้นแข็งแรง (Strength)", "เน้นเหนียว (Toughness)", "เน้นลดต้นทุน (Low Cost)"])
+
+# ระบบแนะนำอัจฉริยะ (Smart Recommendation)
+st.subheader("💡 คำแนะนำจากผู้เชี่ยวชาญ AI")
+if method == "Injection Molding" and f_percent > 30:
+    st.warning(f"สำหรับการขึ้นรูปด้วย **{method}**: ปริมาณ Filler {f_percent}% อาจส่งผลต่อการไหล (MFR) แนะนำให้ตรวจสอบแรงดันฉีด")
+
+if application == "เน้นแข็งแรง (Strength)":
+    if res_ts < 40:
+        st.error("❌ สูตรนี้ 'ไม่ผ่าน' เกณฑ์ความแข็งแรงที่คุณต้องการ แนะนำให้ลดปริมาณ Filler หรือเปลี่ยนชนิด Matrix")
+    else:
+        st.success("✅ สูตรนี้มีความแข็งแรงผ่านเกณฑ์สำหรับการใช้งานวิศวกรรม")
         res_col1, res_col2 = st.columns(2)
         res_col1.metric("คาดการณ์ Tensile Strength", f"{res_ts:.2f} MPa")
         res_col2.metric("คาดการณ์ Impact Strength", f"{res_im:.2f} kJ/m²")
