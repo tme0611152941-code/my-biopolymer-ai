@@ -9,7 +9,7 @@ st.set_page_config(
     page_title="SUT Bioplast AI",
     page_icon="🌱", # ใส่ Emoji หรือ URL ของรูปโลโก้ มทส. ก็ได้
     layout="wide"
-
+)
 # --- ส่วนจัดการสถานะ (Login) ---
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
