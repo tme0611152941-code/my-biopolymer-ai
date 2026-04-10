@@ -89,8 +89,9 @@ application = st.sidebar.selectbox("เป้าหมายหลัก", ["เ
 # ระบบแนะนำอัจฉริยะ (Smart Recommendation)
 st.subheader("💡 คำแนะนำจากผู้เชี่ยวชาญ AI")
 
+# บรรทัดที่ 92 ของคุณจะทำงานได้เพราะมีตัวแปร method แล้ว
 if method == "Injection Molding" and f_percent > 30:
-    st.warning(f"สำหรับการขึ้นรูปด้วย **{method}**: ปริมาณ Filler {f_percent}% อาจส่งผลต่อการไหล (MFR) แนะนำให้ตรวจสอบแรงดันฉีด")
+    st.warning("⚠️ ระวัง: ปริมาณ Filler สูงเกินไปสำหรับการฉีดทั่วไป")
 
 if application == "เน้นแข็งแรง (Strength)":
     if res_ts < 40:
