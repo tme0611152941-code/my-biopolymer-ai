@@ -20,7 +20,7 @@ def load_and_train():
         'Modulus': [3.5, 3.8, 4.2, 4.6, 0.6, 1.1, 1.5, 1.9],
         'Impact': [3.4, 3.8, 4.1, 4.4, 6.8, 7.5, 8.0, 8.3]
     }
-    df = pd.read_csv('polymer_data.csv')
+    df = pd.DataFrame(data)
     
     # แปลงหมวดหมู่เป็นตัวเลขเพื่อ Train AI
     df['Matrix_ID'] = df['Matrix'].factorize()[0]
